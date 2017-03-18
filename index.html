@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NgTable</title>
+    <link href="ngTable.css" rel="stylesheet">
+    <link href="ui-select.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="ng-table.js"></script>
+    <script src="select.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+<div class="container">
+    <div class="row">
+        <div class="panel-body">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <label>Sort by Name</label>
+            <select class="form-control "
+                    data-ng-init="selectCount"
+                    ng-change="countChange(selectCount)"
+                    ng-model="selectCount">
+                <option data-ng-repeat="item in countData" >{{item.first_name}}</option>
+            </select>
+        </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-10">
+                <div class="panel-body text-center default-border">
+                    <h3>Ng-Table</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+                <table ng-table="usersTable" class="table table-striped table-bordered text-center">
+                    <tr ng-repeat="user in data">
+                        <td data-title="'Id'" sortable="'id'">
+                            {{user.id}}
+                        </td>
+                        <td data-title="'First Name'" sortable="'first_name'" filter="{ 'first_name': 'text' }">
+                            {{user.first_name}}
+                        </td>
+                        <td data-title="'Last Name'" sortable="'last_name'" filter="{ 'last_name': 'text' }">
+                            {{user.last_name}}
+                        </td>
+                        <td data-title="'e-mail'" sortable="'email'" filter="{ 'email': 'text' }">
+                            {{user.email}}
+                        </td>
+                        <td data-title="'Country'" sortable="'country'" filter="{ 'country': 'text' }">
+                            {{user.country}}
+                        </td>
+                        <td data-title="'IP'" sortable="'ip_address'">
+                            {{user.ip_address}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
